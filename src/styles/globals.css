@@ -38,6 +38,12 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --text-title: whitesmoke;
+  --text-title__right: rgb(157, 144, 144);
+  --text-subTitle: rgb(193, 141, 141);
+  --color-btn: rgb(159, 112, 112);
+  --color-btn-dark: rgb(166, 20, 20);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -7,10 +7,12 @@ const Banner = ({ buttonText, handleOnClick }) => {
         <span className={styles.title__left}>Coffee</span>
         <span className={styles.title__right}>Shopee</span>
       </h1>
-      <p className={styles.subtitle}>Discover local coffee shops</p>
-      <button className={styles.btn} onClick={handleOnClick}>
-        {buttonText}
-      </button>
+      <p className={styles.subTitle}>Discover local coffee shops</p>
+      <div className={styles.buttonWrapper}>
+        <button className={styles.btn} onClick={handleOnClick}>
+          {buttonText}
+        </button>
+      </div>
     </div>
   );
 };
