@@ -9,7 +9,7 @@ const Banner = ({ buttonText, handleOnClick }) => {
       </h1>
       <p className={styles.subTitle}>Discover local coffee shops</p>
       <div className={styles.buttonWrapper}>
-        <button className={styles.btn} onClick={handleOnClick}>
+        <button className={styles.button} onClick={handleOnClick}>
           {buttonText}
         </button>
       </div>
