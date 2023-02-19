@@ -14,11 +14,11 @@
   line-height: 1;
 }
 
-.title__left {
+.title1 {
   color: rgba(249, 250, 251, 1);
 }
 
-.title__right {
+.title2 {
   display: block;
   color: var(--text-purple);
 }
@@ -114,7 +114,7 @@
     line-height: 1;
   }
 
-  .title__right {
+  .title2 {
     padding-left: 0.5rem;
   }
 
@@ -130,7 +130,7 @@
 
 /** xl breakpoint **/
 @media (min-width: 1280px) {
-  .title__right {
+  .title2 {
     display: inline;
   }
 }
