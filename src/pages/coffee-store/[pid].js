@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import coffeStoreData from "../../../data/coffee-stores.json";
+import Head from "next/head";
 
 // Export and use getStaticProps to fetch data from an API endpoint
 export function getStaticProps(staticProps) {
@@ -17,8 +18,16 @@ export function getStaticProps(staticProps) {
 
 // Export and use getStaticPaths to pre-render pages
 export function getStaticPaths() {
+  const paths = coffeStoreData.map((coffeStore) => {
+    return {
+      params: {
+        pid: coffeStore.id.toString(),
+      },
+    };
+  });
+
   return {
-    paths: [{ params: { pid: "0" } }, { params: { pid: "1" } }],
+    paths,
     fallback: true,
   };
 }
@@ -32,13 +41,18 @@ const CoffeStore = (props) => {
     return <div>Loading...</div>;
   }
 
+  // Destructure props
+  const { address, name, neighbourhood } = props.coffeStore;
+
   return (
     <div>
-      <div>Coffe Store Page {pid}</div>
+      <Head>
+        <title>{name}</title>
+      </Head>
       <Link href="/">Back to Home</Link>
-      <p>{props.coffeStore.address}</p>
-      <p>{props.coffeStore.name}</p>
-      <p>{props.coffeStore.neighbourhood}</p>
+      <p>{address}</p>
+      <p>{name}</p>
+      <p>{neighbourhood}</p>
     </div>
   );
 };
