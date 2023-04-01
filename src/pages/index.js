@@ -5,11 +5,19 @@ import styles from "@/styles/Home.module.css";
 import Banner from "@/components/Banner";
 import heroImage from "../../public/static/hero-image.png";
 import Card from "@/components/card";
-import coffeeStores from "../../data/coffee-stores.json";
+import coffeeStoresData from "../../data/coffee-stores.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export async function getStaticProps(context) {
+  return {
+    props: {
+      coffeeStores: coffeeStoresData,
+    },
+  };
+}
+
+export default function Home(props) {
   const handleBannerOnClick = () => {
     console.log("Banner button clicked");
   };
@@ -34,19 +42,24 @@ export default function Home() {
             height={400}
           />
         </div>
-        <div className={styles.cardLayout}>
-          {coffeeStores.map((coffeeStores) => {
-            return (
-              <Card
-                key={coffeeStores.id}
-                name={coffeeStores.name}
-                imgUrl={coffeeStores.imgUrl}
-                href={`/coffee-store/${coffeeStores.id}`}
-                className={styles.card}
-              />
-            );
-          })}
-        </div>
+        {props.coffeeStores.length > 0 && (
+          <>
+            <h2 className={styles.heading2}>Toronto Stores</h2>
+            <div className={styles.cardLayout}>
+              {props.coffeeStores.map((coffeeStore) => {
+                return (
+                  <Card
+                    key={coffeeStore.id}
+                    name={coffeeStore.name}
+                    imgUrl={coffeeStore.imgUrl}
+                    href={`/coffee-store/${coffeeStore.id}`}
+                    className={styles.card}
+                  />
+                );
+              })}
+            </div>
+          </>
+        )}
       </main>
     </>
   );
